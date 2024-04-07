@@ -1,0 +1,35 @@
+{% extends 'professional/base_professional.html' %}
+{% block content %}
+    <h1>Customer List</h1>
+    <a href="{% url 'customer_add' %}"><button>Add Customer</button></a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Customer Name</th>
+                <th>Customer Since</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in customers %}
+                <tr>
+                    <td>{{ customer.customer_name }}</td>
+                    <td>{{ customer.customer_since }}</td>
+                    <td>
+                        <a href="{% url 'customer_update' customer.id %}">
+                            <button>Update</button>
+                        </a>
+                    </td>
+                    <td>
+                        <form action="{% url 'customer_delete' customer.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

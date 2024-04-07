@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BS Installed</title>
+
+</head>
+<body>
+
+<h1>BS Installed, Wait we'll Use</h1>
+
+{% if data.role == "Assistent Manager" %}
+    <h2>Welcome {{ data.name }}</h2>
+{% elif data.role == "user" %}
+    <h2>Hello {{ data.name }}</h2>
+{% else %}
+    <h2>Unknown User</h2>
+{% endif %}
+
+<p>Status: <span style="color: green;">{{ connection_status }}</span></p>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Milkymist Suggestion & Reward System</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}"> <!-- Corrected the CSS link -->
+</head>
+<body>
+  <header>
+    <h1>Milkymist Employee Suggestion & Reward System</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">Submit Suggestion</a></li>
+      <li><a href="#">View Suggestions (Admin)</a></li>
+      <li><a href="#">Upcoming Features</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="dashboard">
+      <h2>Welcome, {{ employee_of_month.employee_name }}!</h2> <!-- Dynamic employee name -->
+      <p>Let's see what exciting opportunities await you today!</p>
+      <div class="events">
+        <h3>Current Event: Ad Creation Campaign</h3>
+        <p>Create a unique ad for Milkymist and get a chance to win ₹10,000!</p>
+        <button>Learn More</button>
+      </div>
+      <div class="leaderboard">
+        <h3>Top 3 Suggestions (This Month)</h3>
+        <ol>
+          {% for suggestion in top_suggestions %}
+          <li>{{ suggestion.employee_name }} ({{ suggestion.title }}) - ₹{{ suggestion.marks }}</li> <!-- Dynamic suggestion details -->
+          {% endfor %}
+        </ol>
+      </div>
+      <div class="announcements">
+        <h3>Employee of the Month</h3>
+        <p>Congratulations to {{ employee_of_month.employee_name }}!</p> <!-- Dynamic employee name -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; Milkymist 2024</p>
+  </footer>
+</body>
+</html>
+

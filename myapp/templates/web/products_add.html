@@ -1,0 +1,15 @@
+{% extends 'professional/base_professional.html' %}
+
+{% block content %}
+<h1>Products Adding Page</h1>
+
+<a href='all_products/'><button>Back</button></a>
+
+
+<form action="" method="POST">
+{% csrf_token %}
+{{ product_form }}
+<button type="submit">Add Product</button>
+</form>
+
+{% endblock %}

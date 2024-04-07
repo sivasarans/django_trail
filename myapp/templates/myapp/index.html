@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Conditional Example</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+</head>
+<body>
+
+
+<h1>Conditional Example</h1>
+
+{% if data.role == "admin" %}
+    <h2>Welcome {{ data.name | default:"nil" }}</h2>
+{% elif data.role == "user" %}
+    <h2>Hello {{ data.name }}</h2>
+{% else %}
+    <h2>Unknown User</h2>
+{% endif %}
+
+<p>Status: <span style="color: green;">{{ connection_status }}</span></p>
+<p>Python Addition Output: {{ output }}</p>
+<p>-------------------------template Variables formating--------------------------</p>
+    <h3>Lower Case:  <span style="color: green;">{{ template_variables.title | lower}}</span>, Upper Case:  <span style="color: green;">{{ template_variables.title | upper}}</span></h3>
+
+    <h2>Truncated Blog Post:</h2>
+    <p>{{ template_variables.blog.post | truncatewords:50 }}</p>
+
+    <h2>Order Date:</h2>
+    <p>{{ template_variables.order.date | date:"D M Y" }}</p>
+
+    <h2>First Three List Items:</h2>
+    <ul>
+        {% for item in template_variables.list_items|slice:":3" %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Total:</h2>
+    <p>{{ template_variables.total | default:"nil" }}</p>
+    <p>---------------------------------------------------</p>
+
+    <ul>
+        {% for number in data.numbers|slice:":4" %}
+        <li>{{ number }}</li>
+    {% endfor %}    
+    <h2> ------------------- Current Path is {{ request.path }} ---------------------  </h2>
+
+</ul>
+</body>
+</html>

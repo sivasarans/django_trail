@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Posts</title>
+</head>
+<body>
+    <h1>Blog Posts</h1>
+    <ul>
+        {% for post in object_list %}
+            <li>
+                <a href="{% url 'post-delete' id=post.id %}">Delete</a>
+                <strong>{{ post.title }}</strong> - {{ post.content }}
+            </li>
+        {% empty %}
+            <li>No posts available.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'post-create' %}">Create New Post</a>
+    {{ request.path }}
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!-- professional/add_customer.html -->
+
+{% extends 'professional/base_professional.html' %}
+{% block content %}
+    <h1>Customer Add Page</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Add customer">
+    </form>
+    <a href="{% url 'customer_list' %}"><button>Back to Customer List</button></a>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+<!-- orders_list.html -->
+{% extends 'professional/base_professional.html' %}
+{% block content %}
+<h1>Orders List</h1>
+<a href="{% url 'orders_add' %}"><button>Add Order</button></a>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Order Number</th>
+      <th scope="col">Customer Name</th>
+      <th scope="col">Order Date</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Amount</th>
+      <th scope="col">GST Amount</th>
+      <th scope="col">Bill Amount</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for order in orders %}
+    <tr>
+      <td>{{ order.order_number }}</td>
+      <td>{{ order.customer_reference.customer_name }}</td>
+      <td>{{ order.order_date }}</td>
+      <td>{{ order.quantity }}</td>
+      <td>{{ order.amount }}</td>
+      <td>{{ order.gst_amount }}</td>
+      <td>{{ order.bill_amount }}</td>
+      <td>
+        <a href="{% url 'order_update' order.id %}" class="btn btn-primary">Update</a>
+        <a href="{% url 'order_delete' order.id %}" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

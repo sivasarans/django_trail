@@ -1,0 +1,10 @@
+{% extends 'professional/base_professional.html' %}
+{% block content %}
+<h1>Orders Add Page</h1>
+<form action="" method="POST">
+  {% csrf_token %}
+  {{ order_form}}
+  <input type="submit">
+</form>
+{% endblock %}
+
